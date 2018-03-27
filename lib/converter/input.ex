@@ -1,18 +1,17 @@
 defmodule Converter.Input do
   require Timex
-  require IEx
 
   def main(_args) do
     IO.read(:stdio, :all)
     |> clean()
     |> process()
-    |> IO.binwrite()
+    |> IO.puts()
   end
 
   def clean(input) do
     input
     |> String.graphemes()
-    |> Enum.map(fn x -> if(String.valid?(x), do: x, else: String.replace(x, x, "\uFFFD")) end)
+    |> Enum.map(fn x -> if(String.valid?(x), do: x, else: "\uFFFD") end)
     |> Enum.join("")
   end
 

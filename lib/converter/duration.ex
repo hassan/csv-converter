@@ -1,6 +1,4 @@
 defmodule Converter.Duration do
-  require IEx
-
   def convert(string) do
     [hours, minutes, seconds] = String.split(string, ":")
 
